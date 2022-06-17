@@ -42,35 +42,34 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
           trelloLabelIds.push(trelloLabel.id);
         }
       });
-    });
 
   console.log(trelloLabelIds);
-    getCardsOfList(apiKey, apiToken, departureListId).then(function(response) {
-      const cards = response;
-      let cardId;
-      cards.forEach(function(card) {
-  console.log(card.name);
-  console.log(card.name.match(/y\d{4}$/));
-  console.log(card.name.match(/s\d{4}$/));
-        const card_ynumber = card.name.match(/y\d{4}$/) != null ? card.name.match(/y\d{4}$/)[0] : '20000';
-  console.log(card_ynumber);
-        const card_snumber = card.name.match(/s\d{4}$/) != null ? card.name.match(/s\d{4}$/)[0] : '20000';
-  console.log(card_snumber);
-        if (card_ynumber == ynumber || card_snumber == snumber) {
-          cardId = card.id;
-          return true;
+      getCardsOfList(apiKey, apiToken, departureListId).then(function(cards) {
+        let cardId;
+        cards.forEach(function(card) {
+    console.log(card.name);
+    console.log(card.name.match(/y\d{4}$/));
+    console.log(card.name.match(/s\d{4}$/));
+          const card_ynumber = card.name.match(/y\d{4}$/) != null ? card.name.match(/y\d{4}$/)[0] : '20000';
+    console.log(card_ynumber);
+          const card_snumber = card.name.match(/s\d{4}$/) != null ? card.name.match(/s\d{4}$/)[0] : '20000';
+    console.log(card_snumber);
+          if (card_ynumber == ynumber || card_snumber == snumber) {
+            cardId = card.id;
+            return true;
+          }
+        });
+        const cardParams = {
+          labelIds: trelloLabelIds.join()
+        }
+    console.log(cardParams);
+        if (cardId) {
+          addLabelsCard(apiKey, apiToken, cardId, cardParams).then(function(response) {
+          });
+        } else {
+          core.setFailed('Card not found.');
         }
       });
-      const cardParams = {
-        labelIds: trelloLabelIds.join()
-      }
-  console.log(cardParams);
-      if (cardId) {
-        addLabelsCard(apiKey, apiToken, cardId, cardParams).then(function(response) {
-        });
-      } else {
-        core.setFailed('Card not found.');
-      }
     });
   }
 
