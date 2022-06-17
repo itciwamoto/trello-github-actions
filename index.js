@@ -25,10 +25,13 @@ try {
 }
 
 function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
-  const departureListId = process.env['TRELLO_TEST_LIST1_ID'];
+  const departureListId = process.env.TRELLO_TEST_LIST1_ID;
   const ynumber = refContext.match(/y[0-9]{4}$/)[0].slice(1);
   const snumber = refContext.match(/s[0-9]{4}$/)[0].slice(1);
 
+  console.log(departureListId);
+  console.log(ynumber);
+  console.log(snumber);
   getLabelsOfBoard(apiKey, apiToken, boardId).then(function(response) {
     const trelloLabels = response;
     const trelloLabelIds = [];
@@ -39,12 +42,15 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
       });
     });
 
+  console.log(trelloLabelIds);
     getCardsOfList(apiKey, apiToken, departureListId).then(function(response) {
       const cards = response;
       let cardId;
       cards.some(function(card) {
         const card_ynumber = card.name.match(/y[0-9]{4}$/)[0].slice(1);
         const card_snumber = card.name.match(/s[0-9]{4}$/)[0].slice(1);
+  console.log(card_ynumber);
+  console.log(card_snumber);
         if (card_ynumber == ynumber || card_snumber == snumber) {
           cardId = card.id;
           return true;
@@ -53,7 +59,7 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
       const cardParams = {
         labelIds: trelloLabelIds.join()
       }
-
+  console.log(cardParams);
       if (cardId) {
         addLabelsCard(apiKey, apiToken, cardId, cardParams).then(function(response) {
         });
