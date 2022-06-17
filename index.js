@@ -37,6 +37,7 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
   getLabelsOfBoard(apiKey, apiToken, boardId).then(function(response) {
     const trelloLabels = response;
       trelloLabels.forEach(function(trelloLabel) {
+  console.log(trelloLabel.name);
         if (trelloLabel.name == 'Angular') {
           trelloLabelIds.push(trelloLabel.id);
         }
