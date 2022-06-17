@@ -28,9 +28,9 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
   console.log(refContext);
   const departureListId = process.env.TRELLO_TEST_LIST1_ID;
   console.log(departureListId);
-  const ynumber = refContext.match(/y[0-9]{4}$/)[0].slice(1);
+  const ynumber = refContext.match(/y[0-9]{4}$/)[0];
   console.log(ynumber);
-  const snumber = refContext.match(/s[0-9]{4}$/)[0].slice(1);
+  const snumber = refContext.match(/s[0-9]{4}$/)[0];
 
   console.log(snumber);
   getLabelsOfBoard(apiKey, apiToken, boardId).then(function(response) {
@@ -48,8 +48,8 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
       const cards = response;
       let cardId;
       cards.some(function(card) {
-        const card_ynumber = card.name.match(/y[0-9]{4}$/)[0].slice(1);
-        const card_snumber = card.name.match(/s[0-9]{4}$/)[0].slice(1);
+        const card_ynumber = card.name.match(/y[0-9]{4}$/)[0];
+        const card_snumber = card.name.match(/s[0-9]{4}$/)[0];
   console.log(card_ynumber);
   console.log(card_snumber);
         if (card_ynumber == ynumber || card_snumber == snumber) {
@@ -90,6 +90,7 @@ function addLabelsCard(apiKey, apiToken, cardId, params) {
 }
 
 function getLabelsOfBoard(apiKey, apiToken, boardId) {
+  console.log(apiKey,apiToken,boardId);
   return new Promise(function(resolve, reject) {
     request(`https://api.trello.com/1/boards/${boardId}/labels?key=${apiKey}&token=${apiToken}`)
       .then(function(body) {
