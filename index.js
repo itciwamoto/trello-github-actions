@@ -25,12 +25,13 @@ try {
 }
 
 function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
+  console.log(refContext);
   const departureListId = process.env.TRELLO_TEST_LIST1_ID;
+  console.log(departureListId);
   const ynumber = refContext.match(/y[0-9]{4}$/)[0].slice(1);
+  console.log(ynumber);
   const snumber = refContext.match(/s[0-9]{4}$/)[0].slice(1);
 
-  console.log(departureListId);
-  console.log(ynumber);
   console.log(snumber);
   getLabelsOfBoard(apiKey, apiToken, boardId).then(function(response) {
     const trelloLabels = response;
