@@ -48,6 +48,7 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
       const cards = response;
       let cardId;
       cards.some(function(card) {
+  console.log(card);
         const card_ynumber = card.name.match(/y[0-9]{4}$/) != null ? card.name.match(/y[0-9]{4}$/)[0] : '';
   console.log(card_ynumber);
         const card_snumber = card.name.match(/s[0-9]{4}$/) != null ? card.name.match(/s[0-9]{4}$/)[0] : '';
