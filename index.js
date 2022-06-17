@@ -50,11 +50,11 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
       let cardId;
       cards.forEach(function(card) {
   console.log(card.name);
-  console.log(card.name.replace('[','').replace(']','').match(/y\d{4}$/));
-  console.log(card.name.replace('[','').replace(']','').match(/s\d{4}$/));
-        const card_ynumber = card.name.replace('[','').replace(']','').match(/y\d{4}$/) != null ? card.name.replace('[','').replace(']','').match(/y\d{4}$/)[0] : '20000';
+  console.log(card.name.match(/y\d{4}$/));
+  console.log(card.name.match(/s\d{4}$/));
+        const card_ynumber = card.name.match(/y\d{4}$/) != null ? card.name.match(/y\d{4}$/)[0] : '20000';
   console.log(card_ynumber);
-        const card_snumber = card.name.replace('[','').replace(']','').match(/s\d{4}$/) != null ? card.name.replace('[','').replace(']','').match(/s\d{4}$/)[0] : '20000';
+        const card_snumber = card.name.match(/s\d{4}$/) != null ? card.name.match(/s\d{4}$/)[0] : '20000';
   console.log(card_snumber);
         if (card_ynumber == ynumber || card_snumber == snumber) {
           cardId = card.id;
