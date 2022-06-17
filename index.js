@@ -28,9 +28,9 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
   console.log(refContext);
   const departureListId = process.env.TRELLO_TEST_LIST1_ID;
   console.log(departureListId);
-  const ynumber = refContext.match(/y\d{4}$/) != null ?  refContext.match(/y\d{4}$/)[0] : '';
+  const ynumber = refContext.match(/y\d{4}$/) != null ?  refContext.match(/y\d{4}$/)[0] : '10000';
   console.log(ynumber);
-  const snumber = refContext.match(/s\d{4}$/) != null ?  refContext.match(/s\d{4}$/)[0] : '';
+  const snumber = refContext.match(/s\d{4}$/) != null ?  refContext.match(/s\d{4}$/)[0] : '10000';
 
   console.log(snumber);
   const trelloLabelIds = [];
@@ -51,9 +51,9 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
   console.log(card.name);
   console.log(card.name.replace('[','').replace(']','').match(/y\d{4}$/));
   console.log(card.name.replace('[','').replace(']','').match(/s\d{4}$/));
-        const card_ynumber = card.name.replace('[','').replace(']','').match(/y\d{4}$/) != null ? card.name.replace('[','').replace(']','').match(/y\d{4}$/)[0] : '';
+        const card_ynumber = card.name.replace('[','').replace(']','').match(/y\d{4}$/) != null ? card.name.replace('[','').replace(']','').match(/y\d{4}$/)[0] : '20000';
   console.log(card_ynumber);
-        const card_snumber = card.name.replace('[','').replace(']','').match(/s\d{4}$/) != null ? card.name.replace('[','').replace(']','').match(/s\d{4}$/)[0] : '';
+        const card_snumber = card.name.replace('[','').replace(']','').match(/s\d{4}$/) != null ? card.name.replace('[','').replace(']','').match(/s\d{4}$/)[0] : '20000';
   console.log(card_snumber);
         if (card_ynumber == ynumber || card_snumber == snumber) {
           cardId = card.id;
