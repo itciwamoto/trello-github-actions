@@ -6,7 +6,7 @@ try {
   const apiToken = process.env['TRELLO_API_TOKEN'];
   const boardId = process.env['TRELLO_TEST_BOARD_ID'];
   const refContext = process.env['GITHUB_REF_CONTEXT'];
-  const action = core.getInput('trello-action');
+  const action = 'add_labels_when_push';
 
   switch (action) {
     case 'add_labels_when_push':
