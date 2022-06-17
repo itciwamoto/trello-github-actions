@@ -8,6 +8,12 @@ try {
   const refContext = process.env.GITHUB_REF_CONTEXT;
   const action = 'add_labels_when_push';
 
+  console.log(apiKey);
+  console.log(apiToken);
+  console.log(boardId);
+  console.log(refContext);
+  console.log(action);
+
   switch (action) {
     case 'add_labels_when_push':
       addLabelsAngular(apiKey, apiToken, boardId, refContext);
