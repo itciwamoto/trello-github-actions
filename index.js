@@ -33,9 +33,9 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
   const snumber = refContext.match(/s[0-9]{4}$/) != null ?  refContext.match(/s[0-9]{4}$/)[0] : '';
 
   console.log(snumber);
+  const trelloLabelIds = [];
   getLabelsOfBoard(apiKey, apiToken, boardId).then(function(response) {
     const trelloLabels = response;
-    const trelloLabelIds = [];
       trelloLabels.forEach(function(trelloLabel) {
         if (trelloLabel.name == 'Angular') {
           trelloLabelIds.push(trelloLabel.id);
