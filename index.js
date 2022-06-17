@@ -47,7 +47,7 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext) {
     getCardsOfList(apiKey, apiToken, departureListId).then(function(response) {
       const cards = response;
       let cardId;
-      cards.some(function(card) {
+      cards.forEach(function(card) {
   console.log(card.name);
   console.log(card.name.match(/y[0-9]{4}$/));
   console.log(card.name.match(/s[0-9]{4}$/));
