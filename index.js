@@ -34,6 +34,7 @@ function addLabelsAngular(apiKey, apiToken, boardId, refContext, labelName) {
           const card_ynumber = card.name.match(/y\d{4}/) != null ? card.name.match(/y\d{4}/)[0] : '20000';
           const card_snumber = card.name.match(/s\d{4}/) != null ? card.name.match(/s\d{4}/)[0] : '20000';
           if (card_ynumber == ynumber || card_snumber == snumber) {
+            console.log(card);
             cardId = card.id;
             return true;
           }
