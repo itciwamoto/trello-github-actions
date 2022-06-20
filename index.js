@@ -4,7 +4,7 @@ const request = require('request-promise-native');
 try {
   const apiKey = process.env.TRELLO_API_KEY;
   const apiToken = process.env.TRELLO_API_TOKEN;
-  const boardId = process.env.TRELLO_TEST_BOARD_ID;
+  const boardId = process.env.TRELLO_BOARD_ID;
   const labelName = process.env.TRELLO_LABEL_NAME;
   const refContext = process.env.GITHUB_REF_CONTEXT;
 
@@ -15,7 +15,7 @@ try {
 }
 
 function addLabelsAngular(apiKey, apiToken, boardId, refContext, labelName) {
-  const departureListId = process.env.TRELLO_TEST_LIST1_ID;
+  const departureListId = process.env.TRELLO_LIST_ID;
   const ynumber = refContext.match(/y\d{4}/) != null ?  refContext.match(/y\d{4}/)[0] : '10000';
   const snumber = refContext.match(/s\d{4}/) != null ?  refContext.match(/s\d{4}/)[0] : '10000';
 
